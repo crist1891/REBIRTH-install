@@ -98,5 +98,5 @@ chown -R cristian:cristian /home/cristian/.config/hyperland
 
 EOF
 
-echo "Installation complete replace root and user password"
+echo "Installation complete change root and user password default is 123"
 
