@@ -98,4 +98,5 @@ chown -R cristian:cristian /home/cristian/.config/hyperland
 
 EOF
 
+echo "Installation complete replace root and user password"
 
