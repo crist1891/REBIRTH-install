@@ -57,7 +57,7 @@ cat << HOSTS > /etc/hosts
 HOSTS
 
 # Set root password
-echo root:1325 | chpasswd
+echo root:123 | chpasswd
 
 # Enable multilib in pacman
 sed -i '/#\[multilib\]/s/^#//g' /etc/pacman.conf
@@ -80,8 +80,8 @@ echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Create a user with additional groups and /bin/bash as the shell
-useradd -mG wheel,storage,power -s /bin/bash Cristian
-echo Cristian:1325 | chpasswd
+useradd -mG wheel,storage,power -s /bin/bash cristian
+echo cristian:123 | chpasswd
 
 # Uncomment wheel group in sudoers for privilege escalation
 sed -i '/%wheel ALL=(ALL:ALL) ALL/s/^# //g' /etc/sudoers
@@ -92,14 +92,10 @@ pacman -S --noconfirm sway waybar hyperland-git wlroots xorg-xwayland \
   wofi dmenu firefox nano mesa vulkan-radeon steam
 
 # Configure initial Hyperland session
-mkdir -p /home/Cristian/.config/hyperland
-cp -r /etc/hyperland/* /home/Cristian/.config/hyperland/
-chown -R Cristian:Cristian /home/Cristian/.config/hyperland
+mkdir -p /home/cristian/.config/hyperland
+cp -r /etc/hyperland/* /home/cristian/.config/hyperland/
+chown -R cristian:cristian /home/cristian/.config/hyperland
 
 EOF
 
-# Unmount and reboot
-umount -R /mnt
-swapoff $SWAP_PARTITION
-echo "Installation complete! Rebooting..."
-reboot
+
